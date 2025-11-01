@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NAHARÁ (נהרה) PICTURE &co</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap');
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family:'Roboto', sans-serif;
+      background: url('background.jpg') center/cover no-repeat;
+      color:#333333;
+      overflow-x:hidden;
+    }
+
+    a { text-decoration:none; color:inherit; }
+
+    header {
+      position:fixed; width:100%; top:0; left:0;
+      padding:20px 50px;
+      display:flex; justify-content:space-between; align-items:center;
+      background:rgba(255,255,255,0.85); z-index:1000;
+      box-shadow:0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    header h1 {
+      font-family:'Playfair Display', serif; font-size:28px; color:#bfa35a;
+    }
+
+    nav a { margin-left:30px; font-weight:500; transition:0.3s; }
+    nav a:hover { color:#d4b86c; }
+
+    .hero {
+      height:100vh;
+      background: url('images/nature1.jpg') center/cover no-repeat;
+      display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;
+      position:relative;
+    }
+
+    .hero::after {
+      content:''; position:absolute; inset:0; background:rgba(255,255,255,0.3);
+    }
+
+    .hero-content { position:relative; z-index:1; color:#bfa35a; }
+
+    .hero-content h2 {
+      font-family:'Playfair Display', serif; font-size:48px; margin-bottom:20px;
+      text-shadow:1px 1px 3px rgba(0,0,0,0.2);
+    }
+
+    .hero-content p { font-size:20px; margin-bottom:30px; }
+
+    .hero-content a {
+      padding:15px 40px; background:#bfa35a; color:white; border-radius:50px; font-weight:bold; transition:0.3s;
+    }
+
+    .hero-content a:hover { background:#d4b86c; transform:translateY(-3px); }
+
+    .section { padding:100px 50px; }
+
+    .section h2 {
+      text-align:center; font-family:'Playfair Display', serif; font-size:36px; margin-bottom:50px; color:#bfa35a;
+    }
+
+    .filter-buttons { text-align:center; margin-bottom:30px; }
+
+    .filter-buttons button {
+      padding:10px 20px; margin:5px;
+      border:1px solid #bfa35a; background:white; color:#bfa35a;
+      font-weight:bold; border-radius:25px; cursor:pointer; transition:0.3s;
+    }
+
+    .filter-buttons button:hover, .filter-buttons button.active {
+      background:#bfa35a; color:white;
+    }
+
+    .gallery {
+      display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:30px;
+    }
+
+    .gallery img {
+      width:100%; border-radius:15px; transition:transform 0.5s, box-shadow 0.5s; cursor:pointer;
+    }
+
+    .gallery img:hover {
+      transform:scale(1.05); box-shadow:0 20px 30px rgba(0,0,0,0.2);
+    }
+
+    form {
+      max-width:600px; margin:0 auto; display:flex; flex-direction:column; gap:20px;
+    }
+
+    form input, form select, form textarea {
+      padding:15px; border-radius:10px; border:1px solid #ccc; transition:0.3s;
+    }
+
+    form input:focus, form select:focus, form textarea:focus {
+      border-color:#bfa35a; box-shadow:0 0 10px rgba(191,163,90,0.3);
+    }
+
+    form button {
+      padding:15px; border-radius:50px; background:#bfa35a; color:white; font-weight:bold; border:none; cursor:pointer; transition:0.3s;
+    }
+
+    form button:hover { background:#d4b86c; transform:translateY(-2px); }
+
+    footer {
+      background:#f7f5f0; padding:40px 50px; text-align:center; color:#333;
+    }
+
+    footer h3 { font-family:'Playfair Display', serif; color:#bfa35a; margin-bottom:20px; }
+    footer p { font-size:16px; }
+    .social-icons a { margin:0 10px; font-size:20px; color:#bfa35a; transition:0.3s; }
+    .social-icons a:hover { color:#d4b86c; }
+
+    .fade-in { opacity:0; animation:fadeIn 1.5s forwards; }
+    @keyframes fadeIn { to { opacity:1; } }
+
+    @media(max-width:768px) {
+      header { padding:15px 30px; }
+      .hero-content h2 { font-size:36px; }
+      .hero-content p { font-size:18px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>NAHARÁ (נהרה) PICTURE &co</h1>
+  <nav>
+    <a href="#gallery">Galerie</a>
+    <a href="#booking">Réservation</a>
+    <a href="#tourism">Tourisme</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content fade-in">
+    <h2>Immortaliser la beauté de la Côte d’Ivoire avec lumière et élégance</h2>
+    <p>Photographie haut de gamme & agence de tourisme ivoirien</p>
+    <a href="#gallery">Découvrir</a>
+  </div>
+</section>
+
+<section class="section" id="gallery">
+  <h2>Galerie Premium</h2>
+  <div class="filter-buttons">
+    <button class="active" onclick="filterSelection('all')">Tous</button>
+    <button onclick="filterSelection('evenement')">Événement</button>
+    <button onclick="filterSelection('nature')">Nature</button>
+    <button onclick="filterSelection('personnel')">Shooting Personnel</button>
+    <button onclick="filterSelection('professionnel')">Shooting Professionnel</button>
+    <button onclick="filterSelection('artistique')">Shooting Artistique & Pub</button>
+  </div>
+  <div class="gallery">
+    <img src="images/evenement1.jpg" class="evenement" alt="Événement 1">
+    <img src="images/evenement2.jpg" class="evenement" alt="Événement 2">
+
+    <img src="images/nature1.jpg" class="nature" alt="Nature 1">
+    <img src="images/nature2.jpg" class="nature" alt="Nature 2">
+
+    <img src="images/personnel1.jpg" class="personnel" alt="Shooting Personnel 1">
+    <img src="images/personnel2.jpg" class="personnel" alt="Shooting Personnel 2">
+
+    <img src="images/professionnel1.jpg" class="professionnel" alt="Shooting Professionnel 1">
+    <img src="images/professionnel2.jpg" class="professionnel" alt="Shooting Professionnel 2">
+
+    <img src="images/artistique1.jpg" class="artistique" alt="Shooting Artistique 1">
+    <img src="images/artistique2.jpg" class="artistique" alt="Shooting Artistique 2">
+  </div>
+</section>
+
+<section class="section" id="booking">
+  <h2>Réserver un shooting</h2>
+  <form>
+    <input type="text" placeholder="Nom complet" required>
+    <input type="email" placeholder="Email" required>
+    <input type="date" required>
+    <select required>
+      <option value="">Type de shooting</option>
+      <option value="evenement">Événement</option>
+      <option value="nature">Nature</option>
+      <option value="personnel">Shooting Personnel</option>
+      <option value="professionnel">Shooting Professionnel</option>
+      <option value="artistique">Shooting Artistique & Pub</option>
+    </select>
+    <textarea placeholder="Message" rows="4"></textarea>
+    <button type="submit">Envoyer</button>
+  </form>
+</section>
+
+<section class="section" id="tourism">
+  <h2>Tourisme Ivoirien</h2>
+  <p style="text-align:center; max-width:800px; margin:0 auto; font-size:18px;">
+    Explorez les merveilles de la Côte d’Ivoire avec notre agence haut de gamme : plages, forêts, culture, aventure et confort exceptionnel.
+  </p>
+</section>
+
+<footer id="contact">
+  <h3>NAHARÁ (נהרה) PICTURE &co</h3>
+  <p>&copy; 2025 Tous droits réservés | Contact : info@nahara.com</p>
+  <div class="social-icons">
+    <a href="#" aria-label="Twitter">🐦</a>
+    <a href="#" aria-label="Instagram">📷</a>
+    <a href="#" aria-label="Email">✉️</a>
+  </div>
+</footer>
+
+<script>
+  window.onload = function() { filterSelection('all'); };
+  function filterSelection(category) {
+    var x = document.getElementsByClassName("gallery")[0].getElementsByTagName("img");
+    if(category=="all") category="";
+    for(var i=0;i<x.length;i++){
+      x[i].style.display = x[i].className.indexOf(category) > -1 ? "block" : "none";
+    }
+    var btns = document.getElementsByClassName("filter-buttons")[0].getElementsByTagName("button");
+    for(var i=0;i<btns.length;i++){ btns[i].className = btns[i].className.replace(" active",""); }
+    event.target && (event.target.className += " active");
+  }
+</script>
+
+</body>
+</html>
